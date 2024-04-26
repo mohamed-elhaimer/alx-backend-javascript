@@ -5,7 +5,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([signUpUser(firstName, lastName), uploadPhoto(fileName)])
     .then((results) => {
       const arr = results.map((result) => ({
-        status: elt.status,
+        status: result.status,
         value: Object.prototype.hasOwnProperty.call(result, 'reason') ? String(result.reason) : result.value,
       }));
       return arr;
